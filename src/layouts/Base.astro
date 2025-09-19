@@ -1,0 +1,38 @@
+---
+const { title = "블로그", description = "AI/에이전트 개발 메모", lang = "ko" } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font-family: system-ui, "Noto Sans KR", Apple SD Gothic Neo, sans-serif; margin: 0; }
+      header, main, footer { max-width: 880px; margin: 0 auto; padding: 1.25rem; }
+      nav a { margin-right: 0.75rem; text-decoration: none; }
+      .meta { color: gray; font-size: 0.9rem; }
+      pre { overflow: auto; padding: 1rem; border-radius: 8px; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 style="margin:0;">AI 개발 블로그</h1>
+      <nav>
+        <a href="/">홈</a>
+        <a href="/blog/">블로그</a>
+        <a href="/about/">소개</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <small class="meta">© {new Date().getFullYear()} • Powered by Astro + MDX</small>
+    </footer>
+  </body>
+</html>
+

@@ -1,10 +1,17 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Base from "../layouts/Base.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
+
+<Base title="홈 | AI 개발 블로그">
+    <h2>환영합니다 👋</h2>
+    <p>논문 리뷰, 에이전트 개발 트러블슈팅, 비즈니스 팁을 정리합니다.</p>
+    <p><a href="/blog/">→ 블로그로 이동</a></p>
+</Base>
 
 <Layout>
 	<Welcome />
