@@ -11,7 +11,7 @@ const posts = (await getCollection("blog"))
   <ul>
     {posts.map(({ slug, data }) => (
       <li style="margin-bottom: .75rem;">
-        <a href={`/blog/${slug}/`}><strong>{data.title}</strong></a><br />
+        <a href={`${import.meta.env.BASE_URL}/blog/${slug}/`}><strong>{data.title}</strong></a><br />
         <span class="meta">
           {data.date.toISOString().slice(0,10)} · {data.tags.join(", ")}
         </span>

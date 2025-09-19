@@ -1,22 +1,19 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection } from "astro:content";
 
-// 1) 빌드 타임에 모든 블로그 글의 slug를 알려줍니다.
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => !data.draft); // draft 제외(원하면)
-  return posts.map((post) => ({
-    params: { slug: post.slug },
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }, // <- 여기서 그대로 전달
   }));
 }
 
-// 2) 현재 요청된 slug의 문서를 렌더링합니다.
-const { slug } = Astro.params;
-const entry = await getEntryBySlug("blog", slug);
-if (!entry) {
-  throw new Error(`포스트를 찾을 수 없습니다: ${slug}`);
-}
-const { Content, data } = await entry.render();
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { data } = entry;
 ---
 
 <Base title={`${data.title} | AI 개발 블로그`} description={data.description}>
